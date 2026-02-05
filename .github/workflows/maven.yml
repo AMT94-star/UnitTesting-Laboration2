@@ -48,10 +48,6 @@ jobs:
         run: |
           npm install
           npx playwright install --with-deps
-        #låter playwright köras
-      - name: Playwright Execute
-        run: |
-          chmod +x node_modules/.bin/playwright
         #kör playwright testerna
       - name: Run Playwright tests
         run: npx playwright test
