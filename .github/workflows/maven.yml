@@ -46,6 +46,7 @@ jobs:
         #installera playwright och browsers
       - name: Install playwright
         run: |
+          cd UnitTesting-Laboration2
           npm install
           npx playwright install --with-deps
         #kör playwright testerna
