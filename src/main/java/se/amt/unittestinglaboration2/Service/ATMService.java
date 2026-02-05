@@ -1,10 +1,12 @@
 package se.amt.unittestinglaboration2.Service;
 
+import org.springframework.stereotype.Service;
 import se.amt.unittestinglaboration2.Component.AccountComponent;
 import se.amt.unittestinglaboration2.Exception.InsufficentFundsException;
 import se.amt.unittestinglaboration2.Exception.InvalidAmountException;
 import se.amt.unittestinglaboration2.Exception.MaxWithdrawalExceededException;
 
+@Service
 public class ATMService {
     private final AccountComponent account;
 
