@@ -1,12 +1,4 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Java CI with Maven
+name: Java CI with Maven and Playwright
 
 on:
   push:
@@ -16,44 +8,49 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # Hämta koden
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Installera Java 17
       - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
           cache: maven
-        #      - name: Build with Maven
-        #        run: mvn -B package --file pom.xml
-        #kör tester junit och mock
+
+      # Kör Maven-tester (JUnit + Mockito)
       - name: Run unit tests
         run: mvn test
-        #startar spring boot
-      - name: Start Spring boot
+
+      # Starta Spring Boot
+      - name: Start Spring Boot
         run: mvn spring-boot:run &
-        #vänta tills appen är redo
+
+      # Vänta tills Spring Boot är redo
       - name: Wait for app to start
         run: sleep 15
-        #lägger till node.js
-      - name: Setup Node.js
+
+      # Installera Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-        #installera playwright och browsers
-      - name: Install playwright
+
+      # Installera Playwright och webbläsare
+      - name: Install Playwright
         run: |
-          cd UnitTesting-Laboration2
           npm install
           npx playwright install --with-deps
-        #låter playwright köras
-      - name: Playwright Execute
-        run: |
-          chmod +x node_modules/.bin/playwright
-        #kör playwright testerna
+
+      # Gör Playwright körbar
+      - name: Make Playwright executable
+        run: chmod +x node_modules/.bin/playwright
+
+      # Kör Playwright
       - name: Run Playwright tests
         run: npx playwright test
-
