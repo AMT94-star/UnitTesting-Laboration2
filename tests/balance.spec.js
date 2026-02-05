@@ -4,3 +4,9 @@ test('Saldo page should load', async ({page}) => {
     await page.goto('http://localhost:8080/balance');
     await expect(page.locator('h1')).toHaveText('Ditt Saldo');
 });
+
+test('Saldo should start at 0', async ({page}) => {
+    await page.goto('http://localhost:8080/balance');
+    const saldoText = await page.locator('span#balance').textContent();
+    expect(saldoText).toBe('0');
+})
