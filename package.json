@@ -1,31 +1,10 @@
 {
   "name": "unittesting-laboration2",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "playwright tests"
+    "test": "playwright test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/AMT94-star/UnitTesting-Laboration2.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/AMT94-star/UnitTesting-Laboration2/issues"
-  },
-  "homepage": "https://github.com/AMT94-star/UnitTesting-Laboration2#readme",
   "devDependencies": {
     "@playwright/test": "^1.58.1"
-  },
-  "directories": {
-    "test": ""
-  },
-  "dependencies": {
-    "playwright": "^1.58.1",
-    "playwright-core": "^1.58.1"
   }
 }
