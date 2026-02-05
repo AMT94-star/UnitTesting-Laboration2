@@ -46,7 +46,6 @@ jobs:
         #installera playwright och browsers
       - name: Install playwright
         run: |
-          cd $GITHUB_WORKSPACE
           npm install
           npx playwright install --with-deps
         #kör playwright testerna

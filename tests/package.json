@@ -22,7 +22,7 @@
     "@playwright/test": "^1.58.1"
   },
   "directories": {
-    "test": "tests"
+    "test": ""
   },
   "dependencies": {
     "playwright": "^1.58.1",
