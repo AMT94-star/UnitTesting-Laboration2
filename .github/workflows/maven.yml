@@ -47,8 +47,8 @@ jobs:
       - name: Install playwright
         run: |
           npm install
-          npx playwright install --with-deps
+          npx --yes @playwright/test install --with-deps
         #kör playwright testerna
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx --yes @playwright/test test
 
