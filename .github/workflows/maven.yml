@@ -29,26 +29,38 @@ jobs:
           cache: maven
         #      - name: Build with Maven
         #        run: mvn -B package --file pom.xml
-        #kör tester junit och mock
+
+      #kör tester junit och mock
       - name: Run unit tests
         run: mvn test
-        #startar spring boot
+
+      #startar spring boot
       - name: Start Spring boot
         run: mvn spring-boot:run &
-        #vänta tills appen är redo
+
+      #vänta tills appen är redo
       - name: Wait for app to start
-        run: sleep 20
-        #lägger till node.js
+        run: sleep 15
+
+      #lägger till node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-        #installera playwright och browsers
+
+      #installera playwright
       - name: Install playwright
-        run: |
-          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install
-          npx --yes @playwright/test install --with-deps
-        #kör playwright testerna
+        run: npm install
+
+      #ge playwright execute permission
+      - name: Playwright execute permission
+        run: chmod +x node_modules/.bin/playwright
+
+      # installera browsers
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      #kör playwright testerna
       - name: Run Playwright tests
-        run: npx --yes @playwright/test test
+        run: npx playwright test
 
