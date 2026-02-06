@@ -37,7 +37,7 @@ jobs:
         run: mvn spring-boot:run &
         #vänta tills appen är redo
       - name: Wait for app to start
-        run: sleep 15
+        run: sleep 20
         #lägger till node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
