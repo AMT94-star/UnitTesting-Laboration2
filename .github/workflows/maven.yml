@@ -46,7 +46,7 @@ jobs:
         #installera playwright och browsers
       - name: Install playwright
         run: |
-          npm install
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm install
           npx --yes @playwright/test install --with-deps
         #kör playwright testerna
       - name: Run Playwright tests
