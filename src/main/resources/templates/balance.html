@@ -8,7 +8,7 @@
 <h1>Ditt Saldo</h1>
 <p>Ditt saldo är: <span id="balance" th:text="${balance} + ' SEK'"> SEK</span></p>
 
-<form action="/deposit" method="post">
+<form action="/balance/deposit" method="post">
     <input id="deposit-input" type="number" name="amount" placeholder="Belopp">
     <button id="deposit-button" type="submit">Sätt in</button>
 </form>

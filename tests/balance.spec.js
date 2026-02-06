@@ -13,11 +13,13 @@ test('Saldo should start at 0', async ({page}) => {
 
 test('Insättning uppdates balance', async ({page}) => {
     await page.goto("http://localhost:8080/balance");
+    await page.waitForSelector('#deposit-input');
 
     //klicka på insättning och fyll i 10
     await page.fill('#deposit-input', '10');
-    await page.fill('#deposit-button');
+    await page.click('#deposit-button');
 
+    await page.waitForSelector('#balance');
     const saldoText = await page.locator('span#balance').textContent();
     expect(saldoText).toBe('10');
 
